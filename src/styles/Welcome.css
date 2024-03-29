@@ -1,0 +1,67 @@
+* {
+  --accent-color1: #1ebb58;
+  --accent-color2: #f9f7f7;
+  --bg-color1: #18181b;
+  --bg-color2: #333c4d;
+}
+
+.welcome-container {
+  margin: 0 10vw;
+  margin-bottom: 30px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  user-select: none;
+  background-color: var(--bg-color1);
+  border: 2px solid var(--bg-color1);
+  border-radius: 16px;
+}
+
+.welcome-main-title {
+  color: var(--accent-color1);
+  margin: 0;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 3.6rem;
+  font-weight: 800;
+}
+
+.welcome-main-title span {
+  color: var(--accent-color2);
+}
+
+.welcome-sub-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent-color2);
+}
+
+.welcome-play-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.welcome-button {
+  width: 100%;
+}
+
+.welcome-button {
+  font-weight: 600;
+  font-size: 20px;
+  background-color: var(--accent-color1);
+  color: var(--bg-color1);
+  margin: 20px;
+  width: 200px;
+  max-width: 20rem;
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid var(--accent-color1);
+  cursor: pointer;
+  transition: 0.4s ease-out;
+}
+
+.welcome-button:hover {
+  background-color: #6ff5a2;
+}
