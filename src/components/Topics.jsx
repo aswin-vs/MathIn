@@ -13,7 +13,7 @@ const Topics = ({ onButtonClick }) => {
   return (
     <div className="topics-container">
       <h1 className='topics-main-title'>Math<span>In</span></h1>
-      <h2 className="topics-sub-title">Choose your topic</h2>
+      <h2 className="topics-sub-title">Pick your play</h2>
       <div className="topics-play-options">
         {playOptions.map((option) => (
           <button
