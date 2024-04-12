@@ -1,12 +1,12 @@
 // This webapp is developed and maintained by 'Aswin V S' (https://github.com/aswin-vs)
 
 import { useState } from 'react';
-import Welcome from './components/Welcome';
-import Play from './components/Play';
+import Topics from './components/Topics';
+import Practice from './components/Practice';
 import Footer from './components/Footer';
 
 const App = () => {
-  const [currentScreen, setCurrentScreen] = useState('welcome');
+  const [currentScreen, setCurrentScreen] = useState('Topics');
   const [clickedButton, setClickedButton] = useState([]);
 
   const handleButtonClick = (title, subtitle, screen) => {
@@ -16,15 +16,15 @@ const App = () => {
 
   const handleBackButtonClick = () => {
     setClickedButton([]);
-    setCurrentScreen('welcome');
+    setCurrentScreen('Topics');
   };
 
   return (
     <>
-      {currentScreen === 'welcome' && <Welcome onButtonClick={handleButtonClick} />}
-      {currentScreen !== 'welcome' && (
+      {currentScreen === 'Topics' && <Topics onButtonClick={handleButtonClick} />}
+      {currentScreen !== 'Topics' && (
         <>
-          <Play fulltitle={clickedButton} screen={currentScreen} onBackButtonClick={handleBackButtonClick} />
+          <Practice fulltitle={clickedButton} screen={currentScreen} onBackButtonClick={handleBackButtonClick} />
         </>
       )}
       <Footer />

@@ -1,6 +1,6 @@
-import '../styles/Welcome.css';
+import '../styles/Topics.css';
 
-const Welcome = ({ onButtonClick }) => {
+const Topics = ({ onButtonClick }) => {
   const playOptions = [
     { id: 0, title: 'Tables', subtitle: '(20x20)', screen: 'Tables20x20' },
     { id: 1, title: 'Squares', subtitle: '(30)', screen: 'Squares30' },
@@ -11,15 +11,15 @@ const Welcome = ({ onButtonClick }) => {
   ];
 
   return (
-    <div className="welcome-container">
-      <h1 className='welcome-main-title'>Math<span>In</span></h1>
-      <h2 className="welcome-sub-title">Choose your play</h2>
-      <div className="welcome-play-options">
+    <div className="topics-container">
+      <h1 className='topics-main-title'>Math<span>In</span></h1>
+      <h2 className="topics-sub-title">Choose your play</h2>
+      <div className="topics-play-options">
         {playOptions.map((option) => (
           <button
             key={option.id}
             onClick={() => onButtonClick(option.title, option.subtitle, option.screen)}
-            className="welcome-button"
+            className="topics-button"
           >
             {option.title}&nbsp;{option.subtitle}
           </button>
@@ -29,4 +29,4 @@ const Welcome = ({ onButtonClick }) => {
   );
 };
 
-export default Welcome;
+export default Topics;

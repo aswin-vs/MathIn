@@ -5,7 +5,7 @@
   --bg-color2: #333c4d;
 }
 
-.welcome-container {
+.topics-container {
   margin: 0 10vw;
   margin-bottom: 30px;
   padding: 25px;
@@ -18,7 +18,7 @@
   border-radius: 16px;
 }
 
-.welcome-main-title {
+.topics-main-title {
   color: var(--accent-color1);
   margin: 0;
   margin-bottom: 25px;
@@ -27,27 +27,27 @@
   font-weight: 800;
 }
 
-.welcome-main-title span {
+.topics-main-title span {
   color: var(--accent-color2);
 }
 
-.welcome-sub-title {
+.topics-sub-title {
   text-align: center;
   margin-bottom: 20px;
   color: var(--accent-color2);
 }
 
-.welcome-play-options {
+.topics-play-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.welcome-button {
+.topics-button {
   width: 100%;
 }
 
-.welcome-button {
+.topics-button {
   font-weight: 600;
   font-size: 20px;
   background-color: var(--accent-color1);
@@ -62,6 +62,6 @@
   transition: 0.4s ease-out;
 }
 
-.welcome-button:hover {
+.topics-button:hover {
   background-color: #6ff5a2;
 }
