@@ -72,7 +72,8 @@ const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
 
       setCorrectAnswers(correctAns.join(', '));
 
-      if (correctAns.includes(userInput)) {
+      const userInputArr = userInput.replace(/\s/g, "").toLowerCase().split(",");
+      if (userInputArr.every(e => correctAns.includes(e))) {
         setShowCorrectIcon(true);
         setShowWrongIcon(false);
       } else {
