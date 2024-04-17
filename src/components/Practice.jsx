@@ -125,7 +125,7 @@ const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
         <h2 className="practice-question">{currentQuestion}&nbsp;=&nbsp;?</h2>
         <div className='practice-flexbox2'>
           <input ref={inputRef} className="practice-input" type="text" value={userInput} onChange={handleInputChange} onKeyDown={handleKeyPress} />
-          <button className="practice-input-btn" onClick={handleSubmit}><img className="practice-input-icon" src={arrowRightIcon} alt="Submit" /></button>
+          <button className="practice-input-btn" onClick={handleSubmit} disabled={answerSubmitted}><img className="practice-input-icon" src={arrowRightIcon} alt="Submit" /></button>
           {showCorrectIcon && <img className='practice-correct-icon' src={correctIcon} alt="Correct" />}
           {showWrongIcon && <img className='practice-wrong-icon' src={wrongIcon} alt="Wrong" />}
         </div>
