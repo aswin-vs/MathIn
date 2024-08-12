@@ -1,4 +1,5 @@
 import '../styles/Topics.css';
+import sparklesIcon from '../assets/sparkles.svg';
 
 const Topics = ({ onButtonClick }) => {
   const playOptions = [
@@ -12,7 +13,14 @@ const Topics = ({ onButtonClick }) => {
 
   return (
     <div className="topics-container">
-      <h1 className='topics-main-title'>Math<span>In</span></h1>
+      <div className="topics-main-title">
+        <button>
+          <img src={sparklesIcon} alt="SparklesIcon" />
+          <h1>Math<span>In</span></h1>
+          <img src={sparklesIcon} alt="SparklesIcon" />
+        </button>
+      </div>
+
       <h2 className="topics-sub-title">Pick your play</h2>
       <div className="topics-play-options">
         {playOptions.map((option) => (
@@ -25,7 +33,7 @@ const Topics = ({ onButtonClick }) => {
           </button>
         ))}
       </div>
-    </div>
+    </div >
   );
 };
 

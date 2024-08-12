@@ -1,4 +1,4 @@
-// This webapp is developed and maintained by 'Aswin V S' (https://github.com/aswin-vs)
+// This project is developed and maintained by 'Aswin V S' (https://github.com/aswin-vs)
 
 import { useState } from 'react';
 import Topics from './components/Topics';

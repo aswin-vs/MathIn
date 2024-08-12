@@ -1,5 +1,5 @@
 # MathIn 🧠
 
-- **🚀 MathIn is a webapp that provides students with a personalized learning experience to strengthen their math foundations. It offers a wide range of interactive tools and practice problems to help students master the concepts they are struggling with. MathIn is designed to be user-friendly and engaging, making it an ideal platform for students of all ages and skill levels.**
+- **🚀 MathIn is a compact project designed to help primary school students begin their mathematical journey. It focuses on training students in essential math skills like multiplication tables, powers, and reciprocals, all with the goal of boosting their confidence in problem-solving and fostering a love for math and science from an early age. MathIn is user-friendly and engaging, making it the perfect platform for young learners.**
 
-- 🌟 Visit the brand new [MathIn](https://aswin-vs.github.io/MathIn/) webapp and embark on a transformative journey towards mathematical mastery!
+- 🌟 Visit [MathIn](https://aswin-vs.github.io/MathIn/) and embark on a transformative journey towards mathematical mastery!
