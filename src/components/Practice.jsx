@@ -1,5 +1,10 @@
+// Practice.jsx
+
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/Practice.css';
+
+import MathInDB from '../assets/MathInDB.json';
 
 import arrowLeftIcon from '../assets/arrow-left.svg';
 import toggleOnIcon from '../assets/toggle-on.svg';
@@ -8,8 +13,6 @@ import arrowRightIcon from '../assets/arrow-right.svg';
 import correctIcon from '../assets/circle-check.svg';
 import wrongIcon from '../assets/circle-x.svg';
 import resetIcon from '../assets/reset.svg';
-
-import MathInDB from '../assets/MathInDB.json';
 
 const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -140,6 +143,12 @@ const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
       </div>
     </div >
   );
+};
+
+Practice.propTypes = {
+  fulltitle: PropTypes.array.isRequired,
+  screen: PropTypes.string.isRequired,
+  onBackButtonClick: PropTypes.func.isRequired,
 };
 
 export default Practice;

@@ -1,3 +1,5 @@
+// Footer.jsx
+
 import footerIcon from '../assets/heart.svg';
 
 const Footer = () => {
