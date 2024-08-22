@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 import '../styles/Content.css';
 
-import M1 from '../assets/MathIn1.svg';
-import M2 from '../assets/MathIn2.svg';
-import M3 from '../assets/MathIn3.svg';
+import content1 from '../assets/mathIn1.svg';
+import content2 from '../assets/mathIn2.svg';
+import content3 from '../assets/mathIn3.svg';
+import downloadIcon from '../assets/download.svg';
 import closeIcon from '../assets/xMark.svg';
-import ContentPdf from '../assets/MathIn.pdf';
+import contentPdf from '../assets/mathIn.pdf';
 
 const Content = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
@@ -16,33 +17,23 @@ const Content = ({ isVisible, onClose }) => {
   return (
     <div className="content-box1" onClick={onClose}>
       <div className="content-box2" onClick={(e) => e.stopPropagation()}>
-        <button className="content-close-btn" onClick={onClose}>
-          <img src={closeIcon} alt="CloseIcon" />
-        </button>
-
         <div className='content-box3'>
-          <img src={M1} alt="M1" />
-          <img src={M2} alt="M2" />
-          <img src={M3} alt="M3" />
+          <a href={contentPdf} download >
+            <button className="content-download-btn">
+              <img src={downloadIcon} alt="downloadIcon" />
+            </button>
+          </a>
+
+          <button className="content-close-btn" onClick={onClose}>
+            <img src={closeIcon} alt="closeIcon" />
+          </button>
         </div>
 
-        {/* <embed src={ContentPdf} type="application/pdf" height="450" width="1150" /> */}
-        {/* <iframe
-          src={ContentPdf}
-          type="application/pdf"
-          width="1150px"
-          height="450px"
-          style={{ border: 'none' }}
-        /> */}
-
-        {/* <iframe
-          src={`https://drive.google.com/file/d/1xmoqKM_aR8rKm3mBI-M3j8OujBf9z1uP/preview`}
-          width="1150px"
-          height="450px"
-          style={{ border: 'none', transform: 'scale(1)', transformOrigin: '0 0' }}
-          allowFullScreen
-        /> */}
-
+        <div className='content-box4'>
+          <img src={content1} alt="content1" />
+          <img src={content2} alt="content2" />
+          <img src={content3} alt="content3" />
+        </div>
       </div>
       <Footer />
     </div>
