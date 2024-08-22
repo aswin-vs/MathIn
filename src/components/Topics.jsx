@@ -1,6 +1,11 @@
+// Topics.jsx
+
+import PropTypes from 'prop-types';
 import '../styles/Topics.css';
 
-const Topics = ({ onButtonClick }) => {
+import sparklesIcon from '../assets/sparkles.svg';
+
+const Topics = ({ onButtonClick, onModalOpen }) => {
   const playOptions = [
     { id: 0, title: 'Tables', subtitle: '(20x20)', screen: 'Tables20x20' },
     { id: 1, title: 'Squares', subtitle: '(30)', screen: 'Squares30' },
@@ -12,7 +17,14 @@ const Topics = ({ onButtonClick }) => {
 
   return (
     <div className="topics-container">
-      <h1 className='topics-main-title'>Math<span>In</span></h1>
+      <div className="topics-main-title">
+        <button onClick={onModalOpen}>
+          <img src={sparklesIcon} alt="Sparkles Icon" />
+          <h1>Math<span>In</span></h1>
+          <img src={sparklesIcon} alt="Sparkles Icon" />
+        </button>
+      </div>
+
       <h2 className="topics-sub-title">Pick your play</h2>
       <div className="topics-play-options">
         {playOptions.map((option) => (
@@ -27,6 +39,11 @@ const Topics = ({ onButtonClick }) => {
       </div>
     </div>
   );
+};
+
+Topics.propTypes = {
+  onButtonClick: PropTypes.func.isRequired,
+  onModalOpen: PropTypes.func.isRequired,
 };
 
 export default Topics;
