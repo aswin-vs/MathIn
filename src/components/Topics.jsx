@@ -5,7 +5,7 @@ import '../styles/Topics.css';
 
 import sparklesIcon from '../assets/sparkles.svg';
 
-const Topics = ({ onButtonClick, onModalOpen }) => {
+const Topics = ({ onButtonClick, onContentOpen }) => {
   const playOptions = [
     { id: 0, title: 'Tables', subtitle: '(20x20)', screen: 'Tables20x20' },
     { id: 1, title: 'Squares', subtitle: '(30)', screen: 'Squares30' },
@@ -18,7 +18,7 @@ const Topics = ({ onButtonClick, onModalOpen }) => {
   return (
     <div className="topics-container">
       <div className="topics-main-title">
-        <button onClick={onModalOpen}>
+        <button onClick={onContentOpen}>
           <img src={sparklesIcon} alt="Sparkles Icon" />
           <h1>Math<span>In</span></h1>
           <img src={sparklesIcon} alt="Sparkles Icon" />
@@ -43,7 +43,7 @@ const Topics = ({ onButtonClick, onModalOpen }) => {
 
 Topics.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  onModalOpen: PropTypes.func.isRequired,
+  onContentOpen: PropTypes.func.isRequired,
 };
 
 export default Topics;

@@ -4,13 +4,13 @@
 import { useState } from 'react';
 import Topics from './components/Topics';
 import Practice from './components/Practice';
-import PdfModal from './components/PdfModal';
+import Content from './components/Content';
 import Footer from './components/Footer';
 
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState('Topics');
   const [clickedButton, setClickedButton] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false);
 
   const handleButtonClick = (title, subtitle, screen) => {
     setClickedButton([title, subtitle]);
@@ -22,23 +22,23 @@ const App = () => {
     setCurrentScreen('Topics');
   };
 
-  const handleModalOpen = () => {
-    setIsModalVisible(true);
+  const handleContentOpen = () => {
+    setIsContentVisible(true);
   };
 
-  const handleModalClose = () => {
-    setIsModalVisible(false);
+  const handleContentClose = () => {
+    setIsContentVisible(false);
   };
 
   return (
     <>
-      {isModalVisible ? (
-        <PdfModal isVisible={isModalVisible} onClose={handleModalClose} />
+      {isContentVisible ? (
+        <Content isVisible={isContentVisible} onClose={handleContentClose} />
       ) : (
         <>
           {currentScreen === 'Topics' && (
             <>
-              <Topics onButtonClick={handleButtonClick} onModalOpen={handleModalOpen} />
+              <Topics onButtonClick={handleButtonClick} onContentOpen={handleContentOpen} />
               <Footer />
             </>
           )}

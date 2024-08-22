@@ -1,6 +1,6 @@
-/* PdfModal.css */
+/* Content.css */
 
-.pdf-modal-overlay {
+.content-box1 {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   z-index: 1000;
 }
 
-.pdf-modal-content {
+.content-box2 {
   background-color: var(--bg-color1);
   margin-bottom: 20px;
   padding: 20px;
@@ -27,13 +27,22 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.pdf-modal-close-btn img {
+.content-box3 {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 20px;
+}
+
+.content-box3 img {}
+
+.content-close-btn img {
   max-width: 0.8rem;
   position: relative;
   display: flex;
 }
 
-.pdf-modal-close-btn {
+.content-close-btn {
   background-color: var(--accent-color1);
   color: var(--bg-color1);
   border: 2px solid var(--accent-color1);
@@ -45,7 +54,7 @@
   align-self: flex-end;
 }
 
-.pdf-modal-close-btn:hover {
+.content-close-btn:hover {
   background-color: #6ff5a2;
   border: 2px solid #6ff5a2;
   color: var(--bg-color1);
@@ -53,7 +62,7 @@
 
 /*
 @media (max-width: 768px) {
-  .pdf-modal-content {
+  .content-box2 {
     width: 90%;
     height: 70%;
   }
