@@ -2,9 +2,10 @@
 // This project is developed and maintained by 'Aswin V S' (https://github.com/aswin-vs)
 
 import { useState } from 'react';
+
 import Topics from './components/Topics';
-import Practice from './components/Practice';
 import Content from './components/Content';
+import Practice from './components/Practice';
 import Footer from './components/Footer';
 
 const App = () => {

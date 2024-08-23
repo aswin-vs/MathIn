@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/Practice.css';
+import '../styles/practice.css';
 
-import MathInDB from '../assets/MathInDB.json';
+import MathInDB from '../assets/mathInDB.json';
 
 import arrowLeftIcon from '../assets/arrow-left.svg';
 import toggleOnIcon from '../assets/toggle-on.svg';

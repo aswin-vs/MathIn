@@ -1,8 +1,7 @@
 // Topics.jsx
 
 import PropTypes from 'prop-types';
-import '../styles/Topics.css';
-
+import '../styles/topics.css';
 import sparklesIcon from '../assets/sparkles.svg';
 
 const Topics = ({ onButtonClick, onContentOpen }) => {

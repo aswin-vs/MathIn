@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import Footer from './Footer';
-import '../styles/Content.css';
+import '../styles/content.css';
 
 import content1 from '../assets/mathIn1.svg';
 import content2 from '../assets/mathIn2.svg';
