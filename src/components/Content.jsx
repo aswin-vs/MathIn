@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 import '../styles/content.css';
 
+import contentPdf from '../assets/mathIn.pdf';
+import downloadIcon from '../assets/download.svg';
+import sparklesIcon from '../assets/sparkles.svg';
+import closeIcon from '../assets/xMark.svg';
 import content1 from '../assets/mathIn1.svg';
 import content2 from '../assets/mathIn2.svg';
 import content3 from '../assets/mathIn3.svg';
-import downloadIcon from '../assets/download.svg';
-import closeIcon from '../assets/xMark.svg';
-import contentPdf from '../assets/mathIn.pdf';
 
 const Content = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
@@ -18,11 +19,17 @@ const Content = ({ isVisible, onClose }) => {
     <div className="content-box1" onClick={onClose}>
       <div className="content-box2" onClick={(e) => e.stopPropagation()}>
         <div className='content-box3'>
-          <a href={contentPdf} download >
-            <button className="content-download-btn">
-              <img src={downloadIcon} alt="downloadIcon" />
-            </button>
-          </a>
+          <button className="content-download-btn">
+            <a href={contentPdf} download >
+              <img className="content-download-icon" src={downloadIcon} alt="downloadIcon" />
+            </a>
+          </button>
+
+          <div className='content-title'>
+            <img src={sparklesIcon} alt="Sparkles Icon" />
+            <h1>Math<span>In</span></h1>
+            <img src={sparklesIcon} alt="Sparkles Icon" />
+          </div>
 
           <button className="content-close-btn" onClick={onClose}>
             <img src={closeIcon} alt="closeIcon" />
