@@ -72,7 +72,6 @@ const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
           correctAns.push(key);
         }
       }
-
       setCorrectAnswers(correctAns.join(', '));
 
       const userInputArr = userInput.replace(/\s/g, "").toLowerCase().split(",");
@@ -127,7 +126,7 @@ const Practice = ({ fulltitle, screen, onBackButtonClick }) => {
       <div className="practice-flexbox1">
         <h2 className="practice-question">{currentQuestion}&nbsp;=&nbsp;?</h2>
         <div className='practice-flexbox2'>
-          <input ref={inputRef} className="practice-input" type="text" value={userInput} onChange={handleInputChange} onKeyDown={handleKeyPress} />
+          <input ref={inputRef} id="practice-input" className="practice-input" type="text" value={userInput} onChange={handleInputChange} onKeyDown={handleKeyPress} />
           <button className="practice-input-btn" onClick={handleSubmit} disabled={answerSubmitted}><img className="practice-input-icon" src={arrowRightIcon} alt="Submit" /></button>
           {showCorrectIcon && <img className='practice-correct-icon' src={correctIcon} alt="Correct" />}
           {showWrongIcon && <img className='practice-wrong-icon' src={wrongIcon} alt="Wrong" />}

@@ -1,18 +1,27 @@
 // Content.jsx
 
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Footer from './Footer';
 import '../styles/content.css';
 
 import contentPdf from '../assets/mathIn.pdf';
-import downloadIcon from '../assets/download.svg';
-import sparklesIcon from '../assets/sparkles.svg';
-import closeIcon from '../assets/xMark.svg';
 import content1 from '../assets/mathIn1.svg';
 import content2 from '../assets/mathIn2.svg';
 import content3 from '../assets/mathIn3.svg';
+import downloadIcon from '../assets/download.svg';
+import sparklesIcon from '../assets/sparkles.svg';
+import closeIcon from '../assets/xMark.svg';
 
 const Content = ({ isVisible, onClose }) => {
+  const contentBox4Ref = useRef(null);
+
+  useEffect(() => {
+    if (isVisible && contentBox4Ref.current) {
+      contentBox4Ref.current.focus();
+    }
+  }, [isVisible]);
+
   if (!isVisible) return null;
 
   return (
@@ -20,7 +29,7 @@ const Content = ({ isVisible, onClose }) => {
       <div className="content-box2" onClick={(e) => e.stopPropagation()}>
         <div className='content-box3'>
           <button className="content-download-btn">
-            <a href={contentPdf} download >
+            <a href={contentPdf} download>
               <img className="content-download-icon" src={downloadIcon} alt="downloadIcon" />
             </a>
           </button>
@@ -36,7 +45,7 @@ const Content = ({ isVisible, onClose }) => {
           </button>
         </div>
 
-        <div className='content-box4'>
+        <div ref={contentBox4Ref} tabIndex="0" className='content-box4'>
           <img src={content1} alt="content1" />
           <img src={content2} alt="content2" />
           <img src={content3} alt="content3" />
