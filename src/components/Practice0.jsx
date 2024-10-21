@@ -3,7 +3,6 @@
 import Loader from './Loader';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Practice1 from './Practice1';
 import Footer from './Footer';
 
@@ -89,10 +88,6 @@ const Practice0 = () => {
       </>
     )
   );
-};
-
-Practice0.propTypes = {
-  onClose: PropTypes.func.isRequired,
 };
 
 export default Practice0;
