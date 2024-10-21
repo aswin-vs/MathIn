@@ -1,0 +1,36 @@
+/* loader.css */
+
+.loader-container {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 999;
+}
+
+svg {
+  max-width: 6rem;
+  fill: none;
+  stroke: var(--bg-color1);
+  stroke-linecap: round;
+  stroke-width: 7%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+use {
+  stroke: var(--accent-color1);
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    stroke-dashoffset: 0px;
+  }
+}
