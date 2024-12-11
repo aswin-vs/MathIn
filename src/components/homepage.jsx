@@ -12,9 +12,9 @@ const Homepage = () => {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
 
   const options = [
-    { label: "Prepare", icon: "prepare", path: '/prepare' },
-    { label: "Practice", icon: "practice", path: '/practice' },
-    { label: "Participate", icon: "participate", path: '/participate' }
+    { label: "Prepare", icon: "prepare", path: `${import.meta.env.BASE_URL}prepare` },
+    { label: "Practice", icon: "practice", path: `${import.meta.env.BASE_URL}practice` },
+    { label: "Participate", icon: "participate", path: `${import.meta.env.BASE_URL}participate` }
   ];
 
   useEffect(() => {
