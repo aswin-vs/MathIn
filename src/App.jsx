@@ -11,7 +11,7 @@ import Participate0 from './components/participate0';
 const App = () => {
   return (
     <Routes>
-      <Route path={`${import.meta.env.BASE_URL}`} element={<Homepage />} />
+      <Route path={`${import.meta.env.BASE_URL}/`} element={<Homepage />} />
       <Route path="/prepare" element={<Prepare />} />
       <Route path="/practice" element={<Practice0 />} />
       <Route path="/participate" element={<Participate0 />} />
