@@ -7,11 +7,11 @@ const DisableNavigations = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handlePopState = (event) => {
-      window.history.pushState(null, null, window.location.href);
+    const handlePopState = () => {
+      navigate('/', { replace: true });
     };
 
-    window.history.pushState(null, null, window.location.href);
+    window.history.pushState(null, '', window.location.href);
     window.addEventListener('popstate', handlePopState);
 
     return () => {

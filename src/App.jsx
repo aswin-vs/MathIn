@@ -15,7 +15,7 @@ const App = () => {
       <Route path="prepare" element={<Prepare />} />
       <Route path="practice" element={<Practice0 />} />
       <Route path="participate" element={<Participate0 />} />
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
 }
