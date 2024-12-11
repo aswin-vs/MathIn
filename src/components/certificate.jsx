@@ -4,60 +4,54 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/certificate.css';
 
-const Certificate = ({ onViewed }) => {
+const Certificate = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOpenPdf = async () => {
     setIsLoading(true);
 
     try {
-      // Construct the certificate request payload
-      const certificateId = "XXXX0123456789YY"; // Replace this with dynamic logic if needed
-      const requestBody = {
-        username: "Valai Pechu",
-        certificate_id: certificateId,
-        from_date: "01-01-2024",
-        to_date: "01-01-2025",
-      };
+      const response = await fetch("https://mathin-certapi.up.railway.app/health");
+      const data = await response.json();
+      console.log(data);
 
-      // Make the POST request to the API
-      const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': import.meta.env.VITE_MATHIN_CERT_API_KEY,
-        },
-        body: JSON.stringify(requestBody),
-      });
+      // const certificateId = "XXXX0123456789YY";
+      // const requestBody = {
+      //   username: "Valai Pechu",
+      //   certificate_id: certificateId,
+      //   from_date: "01-01-2024",
+      //   to_date: "01-01-2025",
+      // };
+
+      // const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'x-api-key': import.meta.env.VITE_MATHIN_CERT_API_KEY,
+      //   },
+      //   body: JSON.stringify(requestBody),
+      // });
 
       if (!response.ok) {
         throw new Error('Failed to generate certificate. Please try again later.');
       }
 
-      // Process the response and create a downloadable link
-      const blob = await response.blob();
-      const pdfUrl = URL.createObjectURL(blob);
+      // const blob = await response.blob();
+      // const pdfUrl = URL.createObjectURL(blob);
+      // const link = document.createElement('a');
+      // link.href = pdfUrl;
+      // link.download = `${certificateId}_certificate.pdf`;
+      // document.body.appendChild(link);
+      // link.click();
+      // document.body.removeChild(link);
 
-      // Download the PDF file
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = `${certificateId}_certificate.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Open the PDF in a new tab with zoom
-      const pdfWithZoom = `${pdfUrl}#zoom=65`;
-      const newTab = window.open(pdfWithZoom, '_blank', 'noopener,noreferrer');
-      if (newTab) newTab.opener = null;
-
-      // Clean up after the operation
-      URL.revokeObjectURL(pdfUrl);
-
-      // Call onViewed callback after success
+      // const pdfWithZoom = `${pdfUrl}#zoom=65`;
+      // const newTab = window.open(pdfWithZoom, '_blank', 'noopener,noreferrer');
+      // if (newTab) newTab.opener = null;
+      // URL.revokeObjectURL(pdfUrl);
       setTimeout(() => {
         setIsLoading(false);
-        onViewed();
+        // onViewed();
       }, 1000);
     } catch (error) {
       console.error('Error generating certificate:', error);
