@@ -16,6 +16,7 @@ const App = () => {
       <Route path="practice" element={<Practice0 />} />
       <Route path="participate" element={<Participate0 />} />
       <Route path="*" element={<Navigate to="/" replace={true} />} />
+      <Route path="/*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
 }
