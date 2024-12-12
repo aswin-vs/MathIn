@@ -7,7 +7,7 @@ import '../styles/certificate.css';
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleOpenAndDownloadPdf = async () => {
+  const handleCertDownload = async () => {
     setIsLoading(true);
 
     try {
@@ -36,18 +36,19 @@ const Certificate = ({ onViewed }) => {
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
-      // Auto-download the PDF
-      const downloadLink = document.createElement('a');
-      downloadLink.href = pdfUrl;
-      downloadLink.download = `${certificateId}_certificate.pdf`; // Proper filename for download
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-
       // Open PDF in a new tab
-      const newTab = window.open(`${pdfUrl}#zoom=65`, '_blank', 'noopener,noreferrer');
+      const newTab = window.open('', '_blank');
       if (newTab) {
-        newTab.opener = null;
+        newTab.document.write(`
+        <html>
+          <head>
+            <title>${certificateId}_certificate.pdf</title>
+          </head>
+          <body style="margin:0;">
+            <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
+          </body>
+        </html>
+      `);
       } else {
         throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
       }
@@ -72,7 +73,7 @@ const Certificate = ({ onViewed }) => {
           <div className="certificate-loader"></div>
         </div>
       ) : (
-        <button className="certificate-button" onClick={handleOpenAndDownloadPdf}>
+        <button className="certificate-button" onClick={handleCertDownload}>
           <span>View Certificate</span>
           <img className="certificate-icon" src={`${import.meta.env.BASE_URL}icons/arrowRight.svg`} alt="arrowRightIcon" />
         </button>
