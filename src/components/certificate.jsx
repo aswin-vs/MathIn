@@ -37,12 +37,12 @@ const Certificate = ({ onViewed }) => {
       const pdfUrl = URL.createObjectURL(blob);
 
       // Open PDF in a new tab
-      const newTab = window.open('', '_blank');
+      const newTab = window.open('', '_blank', 'noopener,noreferrer');
       if (newTab) {
         newTab.document.write(`
         <html>
           <head>
-            <title>${certificateId}_certificate.pdf</title>
+            <title>MathIn Pro - Certificate</title>
           </head>
           <body style="margin:0;">
             <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
