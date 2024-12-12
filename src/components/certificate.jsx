@@ -35,9 +35,20 @@ const Certificate = ({ onViewed }) => {
 
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
+
+      // Open in a new tab
       const newTab = window.open(`${pdfUrl}#zoom=65`, '_blank', 'noopener,noreferrer');
       if (newTab) newTab.opener = null;
 
+      // Create a download link programmatically
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = `${certificateId}_certificate.pdf`; // Explicit filename with extension
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Clean up object URL
       setTimeout(() => {
         URL.revokeObjectURL(pdfUrl);
       }, 5000);
