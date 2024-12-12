@@ -11,9 +11,10 @@ const Certificate = ({ onViewed }) => {
     setIsLoading(true);
 
     try {
+      const userData = JSON.parse(sessionStorage.getItem("userData"));
       const certificateId = "XXXX0123456789YY";
       const requestBody = {
-        username: "Valai Pechu",
+        username: userData.name,
         certificate_id: certificateId,
         from_date: "01-01-2024",
         to_date: "01-01-2025",
@@ -46,7 +47,7 @@ const Certificate = ({ onViewed }) => {
         onViewed();
       }, 1000);
     } catch (error) {
-      console.error('Error generating certificate:', error);
+      console.error('Error generating certificate: ', error);
       setIsLoading(false);
     }
   };

@@ -24,7 +24,7 @@ const Participate3 = ({ score, totalQuestions }) => {
 
   const handleClose = () => {
     if (!certificateViewed) {
-      window.alert('Be sure to check the certificate before closing !');
+      window.alert('Be sure to fetch your certificate before leaving !');
     } else {
       navigate('/', { replace: true });
     }
