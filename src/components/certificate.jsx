@@ -7,7 +7,7 @@ import '../styles/certificate.css';
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleOpenPdf = async () => {
+  const handleOpenAndDownloadPdf = async () => {
     setIsLoading(true);
 
     try {
@@ -30,35 +30,37 @@ const Certificate = ({ onViewed }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate certificate. Please try again later !');
+        throw new Error('Failed to generate certificate. Please try again later!');
       }
 
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
-      // Open in a new tab
+      // Auto-download the PDF
+      const downloadLink = document.createElement('a');
+      downloadLink.href = pdfUrl;
+      downloadLink.download = `${certificateId}_certificate.pdf`; // Proper filename for download
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      // Open PDF in a new tab
       const newTab = window.open(`${pdfUrl}#zoom=65`, '_blank', 'noopener,noreferrer');
-      if (newTab) newTab.opener = null;
+      if (newTab) {
+        newTab.opener = null;
+      } else {
+        throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
+      }
 
-      // Create a download link programmatically
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = `${certificateId}_certificate.pdf`; // Explicit filename with extension
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Clean up object URL
+      // Cleanup blob URL after 5 seconds to free memory
       setTimeout(() => {
         URL.revokeObjectURL(pdfUrl);
       }, 5000);
 
-      setTimeout(() => {
-        setIsLoading(false);
-        onViewed();
-      }, 1000);
+      setIsLoading(false);
+      onViewed();
     } catch (error) {
-      console.error('Error generating certificate: ', error);
+      console.error('Error generating certificate:', error);
       setIsLoading(false);
     }
   };
@@ -70,7 +72,7 @@ const Certificate = ({ onViewed }) => {
           <div className="certificate-loader"></div>
         </div>
       ) : (
-        <button className="certificate-button" onClick={handleOpenPdf}>
+        <button className="certificate-button" onClick={handleOpenAndDownloadPdf}>
           <span>View Certificate</span>
           <img className="certificate-icon" src={`${import.meta.env.BASE_URL}icons/arrowRight.svg`} alt="arrowRightIcon" />
         </button>
