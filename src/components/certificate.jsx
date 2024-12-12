@@ -29,7 +29,7 @@ const Certificate = ({ onViewed }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate certificate. Please try again later.');
+        throw new Error('Failed to generate certificate. Please try again later !');
       }
 
       const blob = await response.blob();
