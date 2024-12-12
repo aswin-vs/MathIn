@@ -34,17 +34,13 @@ const Certificate = ({ onViewed }) => {
 
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = `${certificateId}_certificate.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      const pdfWithZoom = `${pdfUrl}#zoom=65`;
-      const newTab = window.open(pdfWithZoom, '_blank', 'noopener,noreferrer');
+      const newTab = window.open(`${pdfUrl}#zoom=65`, '_blank', 'noopener,noreferrer');
       if (newTab) newTab.opener = null;
-      URL.revokeObjectURL(pdfUrl);
+
+      setTimeout(() => {
+        URL.revokeObjectURL(pdfUrl);
+      }, 5000);
+
       setTimeout(() => {
         setIsLoading(false);
         onViewed();
