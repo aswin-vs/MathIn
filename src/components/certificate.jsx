@@ -5,7 +5,7 @@ import '../styles/certificate.css';
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleCertDownloadAndOpen = async () => {
+  const handleCertDownload = async () => {
     setIsLoading(true);
 
     try {
@@ -42,7 +42,7 @@ const Certificate = ({ onViewed }) => {
       downloadLink.href = pdfUrl;
       downloadLink.download = `${certificateId}_certificate.pdf`; // Sets the filename
       document.body.appendChild(downloadLink);
-      downloadLink.click();
+      // downloadLink.click();
       document.body.removeChild(downloadLink);
 
       // Open the PDF in a new tab
@@ -71,7 +71,7 @@ const Certificate = ({ onViewed }) => {
           <div className="certificate-loader"></div>
         </div>
       ) : (
-        <button className="certificate-button" onClick={handleCertDownloadAndOpen}>
+        <button className="certificate-button" onClick={handleCertDownload}>
           <span>Download & View Certificate</span>
           <img className="certificate-icon" src={`${import.meta.env.BASE_URL}icons/arrowRight.svg`} alt="arrowRightIcon" />
         </button>
