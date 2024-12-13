@@ -30,27 +30,21 @@ const Certificate = ({ onViewed }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate certificate. Please try again later!');
+        throw new Error('Failed to generate certificate. Please try again later !');
       }
 
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
-      // Open PDF in a new tab
-      const newTab = window.open('', '_blank', 'noopener,noreferrer');
+      // Open a new tab
+      const newTab = window.open();
       if (newTab) {
-        newTab.document.write(`
-        <html>
-          <head>
-            <title>MathIn Pro - Certificate</title>
-          </head>
-          <body style="margin:0;">
-            <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
-          </body>
-        </html>
-      `);
+        newTab.document.body.innerHTML = `
+        <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width: 100%; height: 100%;" />
+      `;
+        newTab.document.title = "MathIn Pro - Certificate";
       } else {
-        throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
+        throw new Error("Unable to open a new tab. Please check your browser settings !");
       }
 
       // Cleanup blob URL after 5 seconds to free memory
