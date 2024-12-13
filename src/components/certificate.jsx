@@ -36,7 +36,7 @@ const Certificate = ({ onViewed }) => {
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
-      const newTab = window.open('', '_blank', 'noopener,noreferrer');
+      const newTab = window.open('', '_blank');
       if (newTab) {
         newTab.document.write(`
         <html>
