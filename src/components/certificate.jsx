@@ -5,7 +5,7 @@ import '../styles/certificate.css';
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleCertDownload = async () => {
+  const handleCertDownloadAndOpen = async () => {
     setIsLoading(true);
 
     try {
@@ -19,7 +19,7 @@ const Certificate = ({ onViewed }) => {
         to_date: "01-01-2025",
       };
 
-      // Fetch the PDF
+      // Fetch the PDF from the API
       const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
         method: 'POST',
         headers: {
@@ -33,23 +33,28 @@ const Certificate = ({ onViewed }) => {
         throw new Error('Failed to generate certificate. Please try again later!');
       }
 
-      // Create a blob URL for the PDF
+      // Create a blob URL from the response
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
+      // Auto-download the PDF
+      const downloadLink = document.createElement('a');
+      downloadLink.href = pdfUrl;
+      downloadLink.download = `${certificateId}_certificate.pdf`; // Sets the filename
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
       // Open the PDF in a new tab
-      const newTab = window.open('', '_blank');
-      if (newTab) {
-        newTab.document.body.innerHTML = `
-          <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
-        `;
-        newTab.document.title = "MathIn Pro - Certificate";
-      } else {
+      const newTab = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+      if (!newTab) {
         throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
       }
 
-      // Revoke the blob URL after 1 second
-      setTimeout(() => URL.revokeObjectURL(pdfUrl), 1000);
+      // Cleanup the blob URL after a short delay
+      setTimeout(() => {
+        URL.revokeObjectURL(pdfUrl);
+      }, 5000);
 
       setIsLoading(false);
       onViewed();
@@ -66,8 +71,8 @@ const Certificate = ({ onViewed }) => {
           <div className="certificate-loader"></div>
         </div>
       ) : (
-        <button className="certificate-button" onClick={handleCertDownload}>
-          <span>View Certificate</span>
+        <button className="certificate-button" onClick={handleCertDownloadAndOpen}>
+          <span>Download & View Certificate</span>
           <img className="certificate-icon" src={`${import.meta.env.BASE_URL}icons/arrowRight.svg`} alt="arrowRightIcon" />
         </button>
       )}
