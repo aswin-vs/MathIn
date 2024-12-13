@@ -1,5 +1,3 @@
-// certificate.jsx
-
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/certificate.css';
@@ -11,6 +9,7 @@ const Certificate = ({ onViewed }) => {
     setIsLoading(true);
 
     try {
+      // Fetch user data
       const userData = JSON.parse(sessionStorage.getItem("userData"));
       const certificateId = "XXXX0123456789YY";
       const requestBody = {
@@ -20,6 +19,7 @@ const Certificate = ({ onViewed }) => {
         to_date: "01-01-2025",
       };
 
+      // Fetch the PDF
       const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
         method: 'POST',
         headers: {
@@ -30,32 +30,26 @@ const Certificate = ({ onViewed }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate certificate. Please try again later !');
+        throw new Error('Failed to generate certificate. Please try again later!');
       }
 
+      // Create a blob URL for the PDF
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
 
+      // Open the PDF in a new tab
       const newTab = window.open('', '_blank');
       if (newTab) {
-        newTab.document.write(`
-        <html>
-          <head>
-            <title>MathIn Pro - Certificate</title>
-          </head>
-          <body style="margin:0;">
-            <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
-          </body>
-        </html>
-    ` );
+        newTab.document.body.innerHTML = `
+          <embed src="${pdfUrl}#zoom=65" type="application/pdf" style="width:100%; height:100%;" />
+        `;
+        newTab.document.title = "MathIn Pro - Certificate";
       } else {
         throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
       }
 
-      // Cleanup blob URL after 5 seconds to free memory
-      setTimeout(() => {
-        URL.revokeObjectURL(pdfUrl);
-      }, 5000);
+      // Revoke the blob URL after 1 second
+      setTimeout(() => URL.revokeObjectURL(pdfUrl), 1000);
 
       setIsLoading(false);
       onViewed();
