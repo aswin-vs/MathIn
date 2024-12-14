@@ -46,10 +46,10 @@ const Certificate = ({ onViewed }) => {
       document.body.removeChild(downloadLink);
 
       // Open the PDF in a new tab
-      const newTab = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
-      if (!newTab) {
-        throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
-      }
+      // const newTab = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+      // if (!newTab) {
+      //   throw new Error("Unable to open new tab. Please check your browser's popup blocker.");
+      // }
 
       // Cleanup the blob URL after a short delay
       setTimeout(() => {
