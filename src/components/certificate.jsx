@@ -14,6 +14,7 @@ const Certificate = ({ onViewed }) => {
   const userEmail = userData.email;
 
   const fetchCertificateId = async (userEmail) => {
+
     try {
       const userDocRef = doc(db, "passEntries", userEmail);
       const userDoc = await getDoc(userDocRef);
