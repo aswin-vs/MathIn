@@ -20,7 +20,7 @@ const Certificate = ({ onViewed }) => {
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        return userData.certificateId;
+        return userData.uuid;
       } else {
         throw new Error("No userdata found !");
       }
