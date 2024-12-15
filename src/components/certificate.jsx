@@ -9,24 +9,23 @@ import '../styles/certificate.css';
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const userData = JSON.parse(sessionStorage.getItem("userData"));
-  const userName = userData.name;
-  const userEmail = userData.email;
+  const localUserData = JSON.parse(sessionStorage.getItem("userData"));
+  const userName = localUserData.name;
+  const userEmail = localUserData.email;
 
-  const fetchCertificateId = async (userEmail) => {
-
+  const fetchFirebaseData = async (userEmail) => {
     try {
       const userDocRef = doc(db, "passEntries", userEmail);
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
         const fetchedUserData = userDoc.data();
-        return fetchedUserData.uuid;
+        return fetchedUserData;
       } else {
-        throw new Error("No userdata found !");
+        throw new Error("Requested userdata not found !");
       }
     } catch (error) {
-      console.error("Error fetching certificateId: ", error);
+      console.error("Error fetching userdata: ", error);
       throw error;
     }
   };
@@ -35,12 +34,13 @@ const Certificate = ({ onViewed }) => {
     setIsLoading(true);
 
     try {
-      const certificateId = await fetchCertificateId(userEmail);
+      const firebaseUserData = await fetchFirebaseData(userEmail);
+
       const requestBody = {
         username: userName,
-        certificate_id: certificateId,
-        from_date: "01-01-2024",
-        to_date: "01-01-2025",
+        certificate_id: firebaseUserData.uuid,
+        from_date: firebaseUserData.passDate,
+        to_date: firebaseUserData.expiryDate,
       };
 
       const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
@@ -60,7 +60,7 @@ const Certificate = ({ onViewed }) => {
       const pdfUrl = URL.createObjectURL(blob);
       const downloadLink = document.createElement('a');
       downloadLink.href = pdfUrl;
-      downloadLink.download = `${certificateId}_certificate.pdf`;
+      downloadLink.download = `${firebaseUserData.uuid}_certificate.pdf`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
