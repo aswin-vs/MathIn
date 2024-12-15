@@ -2,19 +2,41 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase.config";
 import '../styles/certificate.css';
 
 const Certificate = ({ onViewed }) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
+  const userName = userData.name;
+  const userEmail = userData.mail;
+
+  const fetchCertificateId = async (userEmail) => {
+    try {
+      const userDocRef = doc(db, "passEntries", userEmail);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        return userData.certificateId;
+      } else {
+        throw new Error("No userdata found !");
+      }
+    } catch (error) {
+      console.error("Error fetching certificateId: ", error);
+      throw error;
+    }
+  };
+
   const handleCertDownload = async () => {
     setIsLoading(true);
 
     try {
-      const userData = JSON.parse(sessionStorage.getItem("userData"));
-      const certificateId = "XXXX0123456789YY";
+      const certificateId = await fetchCertificateId(userEmail);
       const requestBody = {
-        username: userData.name,
+        username: userName,
         certificate_id: certificateId,
         from_date: "01-01-2024",
         to_date: "01-01-2025",
@@ -30,7 +52,7 @@ const Certificate = ({ onViewed }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate certificate. Please try again later!');
+        throw new Error('Failed to generate certificate. Please try again later !');
       }
 
       const blob = await response.blob();
@@ -46,12 +68,10 @@ const Certificate = ({ onViewed }) => {
         URL.revokeObjectURL(pdfUrl);
       }, 5000);
 
-      setIsLoading(false);
       onViewed();
-    }
-
-    catch (error) {
+    } catch (error) {
       console.error('Error generating certificate: ', error);
+    } finally {
       setIsLoading(false);
     }
   };
