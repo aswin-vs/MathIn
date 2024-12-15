@@ -11,7 +11,7 @@ const Certificate = ({ onViewed }) => {
 
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const userName = userData.name;
-  const userEmail = userData.mail;
+  const userEmail = userData.email;
 
   const fetchCertificateId = async (userEmail) => {
     try {
