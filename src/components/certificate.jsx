@@ -42,7 +42,7 @@ const Certificate = ({ onViewed }) => {
         to_date: "01-01-2025",
       };
 
-      const response = await fetch("https://mathin-certapi-3cs4.onrender.com/generate-certificate", {
+      const response = await fetch(`${import.meta.env.VITE_MATHIN_CERT_API_URL}/generate-certificate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
