@@ -19,8 +19,8 @@ const Certificate = ({ onViewed }) => {
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
-        const userData = userDoc.data();
-        return userData.uuid;
+        const fetchedUserData = userDoc.data();
+        return fetchedUserData.uuid;
       } else {
         throw new Error("No userdata found !");
       }
