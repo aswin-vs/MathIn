@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase.config";
+import { db } from "../../firebaseConfig";
 import '../styles/certificate.css';
 
 const Certificate = ({ onViewed }) => {
