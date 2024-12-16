@@ -1,3 +1,5 @@
+# .gitignore
+
 # Logs
 logs
 *.log
@@ -7,16 +9,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+functions/node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+functions/lib/
+
+# Firebase-related files
+.firebase/
+firebaserc
+
+# Local environment files
 *.env
-*.local
+*.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -24,5 +41,8 @@ dist-ssr
 *.sln
 *.sw?
 
-1.jsx
-2.jsx
+# Service account key (if applicable, for local development)
+functions/serviceAccountKey.json
+
+# OS-specific files
+Thumbs.db

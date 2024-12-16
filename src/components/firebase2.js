@@ -41,7 +41,8 @@ export async function FirebaseTestResult2(email, name) {
         test: "Passed",
         uuid: generateUUID(),
         passDate: passDate,
-        expiryDate: formattedExpiryDate
+        expiryDate: formattedExpiryDate,
+        expiryTimestamp: expiryDate
       });
 
       return { allowed: true, message: "New pass entry created." };

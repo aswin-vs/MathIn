@@ -69,6 +69,8 @@ const Certificate = ({ onViewed }) => {
         URL.revokeObjectURL(pdfUrl);
       }, 5000);
 
+      alert('Your certificate has been successfully downloaded !');
+
       onViewed();
     } catch (error) {
       console.error('Error generating certificate: ', error);
@@ -82,6 +84,7 @@ const Certificate = ({ onViewed }) => {
       {isLoading ? (
         <div className="certificate-loader-container">
           <div className="certificate-loader"></div>
+          <div>Hang tight! This might take a moment</div>
         </div>
       ) : (
         <button className="certificate-button" onClick={handleCertDownload}>

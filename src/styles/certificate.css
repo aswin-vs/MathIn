@@ -35,6 +35,9 @@
 
 .certificate-loader-container {
   background-color: var(--bg-color2);
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #020202;
   margin: 32px auto;
   padding: 6px 0;
   cursor: none;
@@ -44,6 +47,7 @@
 }
 
 .certificate-loader {
+  margin-right: 1.4rem;
   width: 25px;
   height: 25px;
   border: 5px solid var(--bg-color1);
