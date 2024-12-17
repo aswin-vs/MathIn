@@ -310,7 +310,7 @@ Please change the parent <Route path="${X}"> to <Route path="${X==="/"?"*":`${X}
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class qA{constructor(e){this.container=e}getPlatformInfoString(){return this.container.getProviders().map(n=>{if(HA(n)){const s=n.getImmediate();return`${s.library}/${s.version}`}else return null}).filter(n=>n).join(" ")}}function HA(r){const e=r.getComponent();return(e==null?void 0:e.type)==="VERSION"}const tm="@firebase/app",Fv="0.10.16";/**
+ */class qA{constructor(e){this.container=e}getPlatformInfoString(){return this.container.getProviders().map(n=>{if(HA(n)){const s=n.getImmediate();return`${s.library}/${s.version}`}else return null}).filter(n=>n).join(" ")}}function HA(r){const e=r.getComponent();return(e==null?void 0:e.type)==="VERSION"}const tm="@firebase/app",Fv="0.10.17";/**
  * @license
  * Copyright 2019 Google LLC
  *
@@ -325,7 +325,7 @@ Please change the parent <Route path="${X}"> to <Route path="${X==="/"?"*":`${X}
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const $i=new Om("@firebase/app"),FA="@firebase/app-compat",GA="@firebase/analytics-compat",QA="@firebase/analytics",$A="@firebase/app-check-compat",KA="@firebase/app-check",YA="@firebase/auth",XA="@firebase/auth-compat",WA="@firebase/database",ZA="@firebase/data-connect",JA="@firebase/database-compat",ew="@firebase/functions",tw="@firebase/functions-compat",nw="@firebase/installations",iw="@firebase/installations-compat",rw="@firebase/messaging",sw="@firebase/messaging-compat",aw="@firebase/performance",ow="@firebase/performance-compat",lw="@firebase/remote-config",uw="@firebase/remote-config-compat",cw="@firebase/storage",hw="@firebase/storage-compat",fw="@firebase/firestore",dw="@firebase/vertexai",mw="@firebase/firestore-compat",pw="firebase",gw="11.0.2";/**
+ */const $i=new Om("@firebase/app"),FA="@firebase/app-compat",GA="@firebase/analytics-compat",QA="@firebase/analytics",$A="@firebase/app-check-compat",KA="@firebase/app-check",YA="@firebase/auth",XA="@firebase/auth-compat",WA="@firebase/database",ZA="@firebase/data-connect",JA="@firebase/database-compat",ew="@firebase/functions",tw="@firebase/functions-compat",nw="@firebase/installations",iw="@firebase/installations-compat",rw="@firebase/messaging",sw="@firebase/messaging-compat",aw="@firebase/performance",ow="@firebase/performance-compat",lw="@firebase/remote-config",uw="@firebase/remote-config-compat",cw="@firebase/storage",hw="@firebase/storage-compat",fw="@firebase/firestore",dw="@firebase/vertexai",mw="@firebase/firestore-compat",pw="firebase",gw="11.1.0";/**
  * @license
  * Copyright 2019 Google LLC
  *
@@ -445,7 +445,7 @@ Please change the parent <Route path="${X}"> to <Route path="${X==="/"?"*":`${X}
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Cw(r){Ka(new Bs("platform-logger",e=>new qA(e),"PRIVATE")),Ka(new Bs("heartbeat",e=>new xw(e),"PRIVATE")),Gr(tm,Fv,r),Gr(tm,Fv,"esm2017"),Gr("fire-js","")}Cw("");var Dw="firebase",Nw="11.0.2";/**
+ */function Cw(r){Ka(new Bs("platform-logger",e=>new qA(e),"PRIVATE")),Ka(new Bs("heartbeat",e=>new xw(e),"PRIVATE")),Gr(tm,Fv,r),Gr(tm,Fv,"esm2017"),Gr("fire-js","")}Cw("");var Dw="firebase",Nw="11.1.0";/**
  * @license
  * Copyright 2020 Google LLC
  *
