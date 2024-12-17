@@ -1,7 +1,7 @@
 {
   "name": "mathin",
   "private": true,
-  "version": "2.0.0",
+  "version": "1.0.0",
   "type": "module",
   "homepage": "https://aswin-vs.github.io/MathIn/",
   "scripts": {
