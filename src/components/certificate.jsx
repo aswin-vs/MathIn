@@ -84,7 +84,7 @@ const Certificate = ({ onViewed }) => {
       {isLoading ? (
         <div className="certificate-loader-container">
           <div className="certificate-loader"></div>
-          <div>Hang tight! This might take a moment</div>
+          <div>Hang tight! This might take a while...</div>
         </div>
       ) : (
         <button className="certificate-button" onClick={handleCertDownload}>

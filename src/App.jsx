@@ -7,6 +7,7 @@ import Homepage from './components/homepage';
 import Prepare from './components/prepare';
 import Practice0 from './components/practice0';
 import Participate0 from './components/participate0';
+import CertificateVerify from "./components/certificateVerify";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="prepare" element={<Prepare />} />
       <Route path="practice" element={<Practice0 />} />
       <Route path="participate" element={<Participate0 />} />
+      <Route path="verify/:certificateId" element={<CertificateVerify />} />
       <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
