@@ -1,7 +1,7 @@
 // App.jsx
 // This project is developed and maintained by 'Aswin V S' (https://github.com/aswin-vs)
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
 
 import Homepage from './components/homepage';
@@ -12,23 +12,26 @@ import CertificateVerify from "./components/certificateVerify";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="prepare" element={<Prepare />} />
-      <Route path="practice" element={<Practice0 />} />
-      <Route path="participate" element={<Participate0 />} />
+    <>
+      {/* Use HashRouter specifically for the /verify path */}
+      <HashRouter>
+        <Routes>
+          <Route path="/verify/:certificateId" element={<CertificateVerify />} />
+        </Routes>
+      </HashRouter>
 
-      <Route path="verify/*" element={
-        <HashRouter>
-          <Routes>
-            <Route path=":certificateId" element={<CertificateVerify />} />
-          </Routes>
-        </HashRouter>
-      } />
-
-      <Route path="*" element={<Navigate to="/" replace={true} />} />
-    </Routes>
+      {/* Use BrowserRouter for most routes */}
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="prepare" element={<Prepare />} />
+          <Route path="practice" element={<Practice0 />} />
+          <Route path="participate" element={<Participate0 />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;
