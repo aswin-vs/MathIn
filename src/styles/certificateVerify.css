@@ -2,11 +2,11 @@
 
 .certificate-verify-container {
   width: fit-content;
-  min-width: 45vw;
+  min-width: 42vw;
   max-width: 85vw;
   margin: 0 auto;
   margin-bottom: 30px;
-  padding: 25px 30px;
+  padding: 25px 30px 40px 30px;
   display: flex;
   flex-direction: column;
   align-self: center;
